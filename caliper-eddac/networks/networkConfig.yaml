@@ -1,0 +1,62 @@
+name: EDDAC Caliper Network
+version: "2.0.0"
+
+caliper:
+  blockchain: fabric
+
+channels:
+  - channelName: publicchannel
+    contracts:
+      - id: sc1
+  - channelName: attrchannel
+    contracts:
+      - id: sc2
+
+organizations:
+  - mspid: AA1MSP
+    identities:
+      certificates:
+        - name: User1
+          clientPrivateKey:
+            path:  /root/fabric-samples/eddac/organizations/peerOrganizations/aa1.example.com/users/User1@aa1.example.com/msp/keystore/priv_sk
+          clientSignedCert:
+            path:  /root/fabric-samples/eddac/organizations/peerOrganizations/aa1.example.com/users/User1@aa1.example.com/msp/signcerts/User1@aa1.example.com-cert.pem
+    connectionProfile:
+      path:  /root/fabric-samples/eddac/organizations/peerOrganizations/aa1.example.com/connection-aa1.yaml
+      discover: true
+
+  - mspid: AA2MSP
+    identities:
+      certificates:
+        - name: User1
+          clientPrivateKey:
+            path:  /root/fabric-samples/eddac/organizations/peerOrganizations/aa2.example.com/users/User1@aa2.example.com/msp/keystore/priv_sk
+          clientSignedCert:
+            path:  /root/fabric-samples/eddac/organizations/peerOrganizations/aa2.example.com/users/User1@aa2.example.com/msp/signcerts/User1@aa2.example.com-cert.pem
+    connectionProfile:
+      path:  /root/fabric-samples/eddac/organizations/peerOrganizations/aa2.example.com/connection-aa2.yaml
+      discover: true
+
+  - mspid: AA3MSP
+    identities:
+      certificates:
+        - name: User1
+          clientPrivateKey:
+            path:  /root/fabric-samples/eddac/organizations/peerOrganizations/aa3.example.com/users/User1@aa3.example.com/msp/keystore/priv_sk
+          clientSignedCert:
+            path:  /root/fabric-samples/eddac/organizations/peerOrganizations/aa3.example.com/users/User1@aa3.example.com/msp/signcerts/User1@aa3.example.com-cert.pem
+    connectionProfile:
+      path:  /root/fabric-samples/eddac/organizations/peerOrganizations/aa3.example.com/connection-aa3.yaml
+      discover: true
+
+  - mspid: DTMSP
+    identities:
+      certificates:
+        - name: User1
+          clientPrivateKey:
+            path:  /root/fabric-samples/eddac/organizations/peerOrganizations/dt.example.com/users/User1@dt.example.com/msp/keystore/priv_sk
+          clientSignedCert:
+            path:  /root/fabric-samples/eddac/organizations/peerOrganizations/dt.example.com/users/User1@dt.example.com/msp/signcerts/User1@dt.example.com-cert.pem
+    connectionProfile:
+      path:  /root/fabric-samples/eddac/organizations/peerOrganizations/dt.example.com/connection-dt.yaml
+      discover: true

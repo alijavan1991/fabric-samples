@@ -1,0 +1,821 @@
+test:
+  name: EDDac Fig5 Transaction Volume Sweep
+  description: Sweep transaction volume (TPS) from 250 to 2500 with ~50 concurrent
+    workers, to reproduce Fig.5 style curves.
+  workers:
+    type: local
+    number: 50
+  rounds:
+  - label: bootstrap_sc1_InitLedger
+    description: Initialize PK_ABE and Shamir config (required before GetPKABETx)
+    txNumber: 1
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: InitLedger
+  - label: seed_CreatePKCHTx
+    description: CreatePKCHTx at 250 TPS  
+    txNumber: 200
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 20
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: CreatePKCHTx   
+        seedMode: true   
+  - label: SC1_CreatePKCHTx_TPS250
+    description: CreatePKCHTx at 250 TPS  
+    txNumber: 250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: CreatePKCHTx
+  - label: SC1_CreatePKCHTx_TPS500
+    description: CreatePKCHTx at 500 TPS  
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: CreatePKCHTx
+  - label: SC1_CreatePKCHTx_TPS750
+    description: CreatePKCHTx at 750 TPS  
+    txNumber: 750
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 750
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: CreatePKCHTx
+  - label: SC1_CreatePKCHTx_TPS1000
+    description: CreatePKCHTx at 1000 TPS  
+    txNumber: 1000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1000
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: CreatePKCHTx
+  - label: SC1_CreatePKCHTx_TPS1250
+    description: CreatePKCHTx at 1250 TPS  
+    txNumber: 1250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: CreatePKCHTx
+  - label: SC1_CreatePKCHTx_TPS1500
+    description: CreatePKCHTx at 1500 TPS  
+    txNumber: 1500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: CreatePKCHTx
+  - label: SC1_CreatePKCHTx_TPS1750
+    description: CreatePKCHTx at 1750 TPS  
+    txNumber: 1750
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1750
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: CreatePKCHTx
+  - label: SC1_CreatePKCHTx_TPS2000
+    description: CreatePKCHTx at 2000 TPS  
+    txNumber: 2000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2000
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: CreatePKCHTx
+  - label: SC1_CreatePKCHTx_TPS2250
+    description: CreatePKCHTx at 2250 TPS  
+    txNumber: 2250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: CreatePKCHTx
+  - label: SC1_CreatePKCHTx_TPS2500
+    description: CreatePKCHTx at 2500 TPS  
+    txNumber: 2500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: CreatePKCHTx
+  - label: SC1_GetPKABETx_TPS250
+    description: GetPKABETx at 250 TPS  
+    txNumber: 250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetPKABETx
+  - label: SC1_GetPKABETx_TPS500
+    description: GetPKABETx at 500 TPS  
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetPKABETx
+  - label: SC1_GetPKABETx_TPS750
+    description: GetPKABETx at 750 TPS  
+    txNumber: 750
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 750
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetPKABETx
+  - label: SC1_GetPKABETx_TPS1000
+    description: GetPKABETx at 1000 TPS  
+    txNumber: 1000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1000
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetPKABETx
+  - label: SC1_GetPKABETx_TPS1250
+    description: GetPKABETx at 1250 TPS  
+    txNumber: 1250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetPKABETx
+  - label: SC1_GetPKABETx_TPS1500
+    description: GetPKABETx at 1500 TPS  
+    txNumber: 1500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetPKABETx
+  - label: SC1_GetPKABETx_TPS1750
+    description: GetPKABETx at 1750 TPS  
+    txNumber: 1750
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1750
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetPKABETx
+  - label: SC1_GetPKABETx_TPS2000
+    description: GetPKABETx at 2000 TPS  
+    txNumber: 2000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2000
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetPKABETx
+  - label: SC1_GetPKABETx_TPS2250
+    description: GetPKABETx at 2250 TPS  
+    txNumber: 2250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetPKABETx
+  - label: SC1_GetPKABETx_TPS2500
+    description: GetPKABETx at 2500 TPS  
+    txNumber: 2500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetPKABETx
+  - label: SC1_GetAllPKCHTx_TPS250
+    description: GetAllPKCHTx at 250 TPS  
+    txNumber: 250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetAllPKCHTx
+        readOnly: true
+  - label: SC1_GetAllPKCHTx_TPS500
+    description: GetAllPKCHTx at 500 TPS  
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetAllPKCHTx
+        readOnly: true
+  - label: SC1_GetAllPKCHTx_TPS750
+    description: GetAllPKCHTx at 750 TPS  
+    txNumber: 750
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 750
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetAllPKCHTx
+        readOnly: true
+  - label: SC1_GetAllPKCHTx_TPS1000
+    description: GetAllPKCHTx at 1000 TPS  
+    txNumber: 1000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1000
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetAllPKCHTx
+        readOnly: true
+  - label: SC1_GetAllPKCHTx_TPS1250
+    description: GetAllPKCHTx at 1250 TPS  
+    txNumber: 1250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetAllPKCHTx
+        readOnly: true
+  - label: SC1_GetAllPKCHTx_TPS1500
+    description: GetAllPKCHTx at 1500 TPS  
+    txNumber: 1500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetAllPKCHTx
+        readOnly: true
+  - label: SC1_GetAllPKCHTx_TPS1750
+    description: GetAllPKCHTx at 1750 TPS  
+    txNumber: 1750
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1750
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetAllPKCHTx
+        readOnly: true
+  - label: SC1_GetAllPKCHTx_TPS2000
+    description: GetAllPKCHTx at 2000 TPS  
+    txNumber: 2000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2000
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetAllPKCHTx
+        readOnly: true
+  - label: SC1_GetAllPKCHTx_TPS2250
+    description: GetAllPKCHTx at 2250 TPS  
+    txNumber: 2250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetAllPKCHTx
+        readOnly: true
+  - label: SC1_GetAllPKCHTx_TPS2500
+    description: GetAllPKCHTx at 2500 TPS  
+    txNumber: 2500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: GetAllPKCHTx
+        readOnly: true
+  - label: SC2_SetHidAttTx_TPS250
+    description: SetHidAttTx at 250 TPS  
+    txNumber: 250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetHidAttTx
+  - label: SC2_SetHidAttTx_TPS500
+    description: SetHidAttTx at 500 TPS  
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetHidAttTx
+  - label: SC2_SetHidAttTx_TPS750
+    description: SetHidAttTx at 750 TPS  
+    txNumber: 750
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 750
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetHidAttTx
+  - label: SC2_SetHidAttTx_TPS1000
+    description: SetHidAttTx at 1000 TPS  
+    txNumber: 1000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1000
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetHidAttTx
+  - label: SC2_SetHidAttTx_TPS1250
+    description: SetHidAttTx at 1250 TPS  
+    txNumber: 1250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetHidAttTx
+  - label: SC2_SetHidAttTx_TPS1500
+    description: SetHidAttTx at 1500 TPS  
+    txNumber: 1500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetHidAttTx
+  - label: SC2_SetHidAttTx_TPS1750
+    description: SetHidAttTx at 1750 TPS  
+    txNumber: 1750
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1750
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetHidAttTx
+  - label: SC2_SetHidAttTx_TPS2000
+    description: SetHidAttTx at 2000 TPS  
+    txNumber: 2000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2000
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetHidAttTx
+  - label: SC2_SetHidAttTx_TPS2250
+    description: SetHidAttTx at 2250 TPS  
+    txNumber: 2250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetHidAttTx
+  - label: SC2_SetHidAttTx_TPS2500
+    description: SetHidAttTx at 2500 TPS  
+    txNumber: 2500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetHidAttTx
+  - label: SC2_TransAttToVecTx_TPS250
+    description: TransAttToVecTx at 250 TPS  
+    txNumber: 250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: TransAttToVecTx
+        attrCount: 10
+  - label: SC2_TransAttToVecTx_TPS500
+    description: TransAttToVecTx at 500 TPS  
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: TransAttToVecTx
+        attrCount: 10
+  - label: SC2_TransAttToVecTx_TPS750
+    description: TransAttToVecTx at 750 TPS  
+    txNumber: 750
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 750
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: TransAttToVecTx
+        attrCount: 10
+  - label: SC2_TransAttToVecTx_TPS1000
+    description: TransAttToVecTx at 1000 TPS  
+    txNumber: 1000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1000
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: TransAttToVecTx
+        attrCount: 10
+  - label: SC2_TransAttToVecTx_TPS1250
+    description: TransAttToVecTx at 1250 TPS  
+    txNumber: 1250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: TransAttToVecTx
+        attrCount: 10
+  - label: SC2_TransAttToVecTx_TPS1500
+    description: TransAttToVecTx at 1500 TPS  
+    txNumber: 1500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: TransAttToVecTx
+        attrCount: 10
+  - label: SC2_TransAttToVecTx_TPS1750
+    description: TransAttToVecTx at 1750 TPS  
+    txNumber: 1750
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1750
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: TransAttToVecTx
+        attrCount: 10
+  - label: SC2_TransAttToVecTx_TPS2000
+    description: TransAttToVecTx at 2000 TPS  
+    txNumber: 2000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2000
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: TransAttToVecTx
+        attrCount: 10
+  - label: SC2_TransAttToVecTx_TPS2250
+    description: TransAttToVecTx at 2250 TPS  
+    txNumber: 2250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: TransAttToVecTx
+        attrCount: 10
+  - label: SC2_TransAttToVecTx_TPS2500
+    description: TransAttToVecTx at 2500 TPS  
+    txNumber: 2500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: TransAttToVecTx
+        attrCount: 10
+  - label: SC1_SetPolicyVecTx_TPS250
+    description: SetPolicyVecTx at 250 TPS  
+    txNumber: 250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetPolicyVecTx
+  - label: SC1_SetPolicyVecTx_TPS500
+    description: SetPolicyVecTx at 500 TPS  
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetPolicyVecTx
+  - label: SC1_SetPolicyVecTx_TPS750
+    description: SetPolicyVecTx at 750 TPS  
+    txNumber: 750
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 750
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetPolicyVecTx
+  - label: SC1_SetPolicyVecTx_TPS1000
+    description: SetPolicyVecTx at 1000 TPS  
+    txNumber: 1000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1000
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetPolicyVecTx
+  - label: SC1_SetPolicyVecTx_TPS1250
+    description: SetPolicyVecTx at 1250 TPS  
+    txNumber: 1250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetPolicyVecTx
+  - label: SC1_SetPolicyVecTx_TPS1500
+    description: SetPolicyVecTx at 1500 TPS  
+    txNumber: 1500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetPolicyVecTx
+  - label: SC1_SetPolicyVecTx_TPS1750
+    description: SetPolicyVecTx at 1750 TPS  
+    txNumber: 1750
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1750
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetPolicyVecTx
+  - label: SC1_SetPolicyVecTx_TPS2000
+    description: SetPolicyVecTx at 2000 TPS  
+    txNumber: 2000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2000
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetPolicyVecTx
+  - label: SC1_SetPolicyVecTx_TPS2250
+    description: SetPolicyVecTx at 2250 TPS  
+    txNumber: 2250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetPolicyVecTx
+  - label: SC1_SetPolicyVecTx_TPS2500
+    description: SetPolicyVecTx at 2500 TPS  
+    txNumber: 2500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: SetPolicyVecTx
+  - label: SC1_DecTestTx_TPS250
+    description: DecTestTx at 250 TPS  
+    txNumber: 250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: DecTestTx
+  - label: SC1_DecTestTx_TPS500
+    description: DecTestTx at 500 TPS  
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: DecTestTx
+  - label: SC1_DecTestTx_TPS750
+    description: DecTestTx at 750 TPS  
+    txNumber: 750
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 750
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: DecTestTx
+  - label: SC1_DecTestTx_TPS1000
+    description: DecTestTx at 1000 TPS  
+    txNumber: 1000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1000
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: DecTestTx
+  - label: SC1_DecTestTx_TPS1250
+    description: DecTestTx at 1250 TPS  
+    txNumber: 1250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: DecTestTx
+  - label: SC1_DecTestTx_TPS1500
+    description: DecTestTx at 1500 TPS  
+    txNumber: 1500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: DecTestTx
+  - label: SC1_DecTestTx_TPS1750
+    description: DecTestTx at 1750 TPS  
+    txNumber: 1750
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1750
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: DecTestTx
+  - label: SC1_DecTestTx_TPS2000
+    description: DecTestTx at 2000 TPS  
+    txNumber: 2000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2000
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: DecTestTx
+  - label: SC1_DecTestTx_TPS2250
+    description: DecTestTx at 2250 TPS  
+    txNumber: 2250
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2250
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: DecTestTx
+  - label: SC1_DecTestTx_TPS2500
+    description: DecTestTx at 2500 TPS  
+    txNumber: 2500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 2500
+    workload:
+      module: workloads/eddac-tx.js
+      arguments:
+        txType: DecTestTx
