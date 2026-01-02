@@ -1,0 +1,38 @@
+---
+# Connection profile template (container-friendly)
+name: eddac-${ORGNAMELOWER}
+version: 1.0.0
+client:
+  organization: ${ORGNAME}
+  connection:
+    timeout:
+      peer:
+        endorser: '300'
+organizations:
+  ${ORGNAME}:
+    mspid: ${MSPID}
+    peers:
+    - ${PEERHOST}
+    certificateAuthorities:
+    - ${CAHOST}
+peers:
+  ${PEERHOST}:
+    # IMPORTANT: when the client runs in a container, do NOT use localhost
+    url: grpcs://${PEERHOST}:${P0PORT}
+    tlsCACerts:
+      pem: |
+          ${PEERPEM}
+    grpcOptions:
+      ssl-target-name-override: ${PEERHOST}
+      hostnameOverride: ${PEERHOST}
+certificateAuthorities:
+  ${CAHOST}:
+    # IMPORTANT: when the client runs in a container, do NOT use localhost
+    url: https://${CAHOST}:${CAPORT}
+    caName: ${CANAME}
+    tlsCACerts:
+      pem:
+        - |
+          ${CAPEM}
+    httpOptions:
+      verify: false

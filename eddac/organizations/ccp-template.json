@@ -1,0 +1,49 @@
+{
+  "name": "eddac-${ORGNAMELOWER}",
+  "version": "1.0.0",
+  "client": {
+    "organization": "${ORGNAME}",
+    "connection": {
+      "timeout": {
+        "peer": {
+          "endorser": "300"
+        }
+      }
+    }
+  },
+  "organizations": {
+    "${ORGNAME}": {
+      "mspid": "${MSPID}",
+      "peers": [
+        "${PEERHOST}"
+      ],
+      "certificateAuthorities": [
+        "${CAHOST}"
+      ]
+    }
+  },
+  "peers": {
+    "${PEERHOST}": {
+      "url": "grpcs://${PEERHOST}:${P0PORT}",
+      "tlsCACerts": {
+        "pem": "${PEERPEM}"
+      },
+      "grpcOptions": {
+        "ssl-target-name-override": "${PEERHOST}",
+        "hostnameOverride": "${PEERHOST}"
+      }
+    }
+  },
+  "certificateAuthorities": {
+    "${CAHOST}": {
+      "url": "https://${CAHOST}:${CAPORT}",
+      "caName": "${CANAME}",
+      "tlsCACerts": {
+        "pem": ["${CAPEM}"]
+      },
+      "httpOptions": {
+        "verify": false
+      }
+    }
+  }
+}
