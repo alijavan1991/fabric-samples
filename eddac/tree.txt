@@ -1,0 +1,57 @@
+.
+├── chaincode
+│   ├── sc1_public
+│   │   ├── index.js
+│   │   ├── package.json
+│   │   └── sc1_public.js
+│   └── sc2_attr
+│       ├── index.js
+│       ├── package.json
+│       └── sc2_attr.js
+├── CHAINCODE_AS_A_SERVICE_TUTORIAL.md
+├── compose
+│   ├── compose-test-net.yaml
+│   └── docker
+│       ├── docker-compose-test-net.yaml
+│       └── peercfg
+│           └── core.yaml
+├── configtx
+│   └── configtx.yaml
+├── deploy_sc1.sh
+├── deploy_sc2.sh
+├── monitordocker.sh
+├── network.config
+├── network.sh
+├── organizations
+│   ├── ccp-generate.sh
+│   ├── ccp-template.json
+│   ├── ccp-template.yaml
+│   └── cryptogen
+│       ├── crypto-config-aa1.yaml
+│       ├── crypto-config-aa2.yaml
+│       ├── crypto-config-aa3.yaml
+│       ├── crypto-config-dt.yaml
+│       └── crypto-config-orderer.yaml
+├── README.md
+├── scripts
+│   ├── add_new_orderer_to_config.py
+│   ├── ccutils.sh
+│   ├── configUpdate.sh
+│   ├── createChannel.sh
+│   ├── deployCCAAS.sh
+│   ├── deployCC.sh
+│   ├── envVar.sh
+│   ├── orderer2.sh
+│   ├── orderer3.sh
+│   ├── orderer4.sh
+│   ├── orderer.sh
+│   ├── packageCC.sh
+│   ├── pkgcc.sh
+│   ├── setAnchorPeer.sh
+│   └── utils.sh
+├── setOrgEnv.sh
+├── simple_network.sh
+├── system-genesis-block
+└── tree.txt
+
+12 directories, 43 files
